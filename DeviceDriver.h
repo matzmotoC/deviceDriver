@@ -1,6 +1,8 @@
-#pragma once
+
 #pragma once
 #include "FlashMemoryDevice.h"
+
+#include <stdexcept>
 
 class DeviceDriver
 {
@@ -11,4 +13,9 @@ public:
 
 protected:
     FlashMemoryDevice* m_hardware;
+};
+
+class WriteFailException : public std::runtime_error {
+public:
+    explicit WriteFailException(const std::string& msg) : std::runtime_error(msg) {}
 };
